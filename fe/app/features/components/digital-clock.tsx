@@ -42,7 +42,7 @@ export default function DigitalClock() {
 
   return (
     <div className="grid grid-cols-1 content-around gap-2 sm:gap-4">
-      <span className="text-center text-2xl sm:text-9xl">
+      <span className="text-center text-3xl sm:text-9xl">
         {getTimeInTimeZone(tz)}
       </span>
 
