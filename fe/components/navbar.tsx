@@ -1,3 +1,4 @@
+"use client";
 import {
   Navbar as HeroUINavbar,
   NavbarContent,
@@ -16,11 +17,25 @@ import clsx from "clsx";
 
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
-import { GithubIcon, SearchIcon, Logo } from "@/components/icons";
-import { Switch } from "@heroui/switch";
+import { SearchIcon, Logo } from "@/components/icons";
 import TimeFormatSwitch from "../app/features/components/time-format-switch";
+import { useState } from "react";
 
 export const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const updateMenu = () => {
+    if (isMenuOpen) {
+      setIsMenuOpen(false);
+    } else {
+      setIsMenuOpen(true);
+    }
+  };
+
+  const updateMenuClose = () => {
+    setIsMenuOpen(false);
+  };
+
   const searchInput = (
     <Input
       aria-label="Search"
@@ -43,7 +58,12 @@ export const Navbar = () => {
   );
 
   return (
-    <HeroUINavbar maxWidth="xl" position="sticky">
+    <HeroUINavbar
+      isMenuOpen={isMenuOpen}
+      onMenuOpenChange={setIsMenuOpen}
+      maxWidth="xl"
+      position="sticky"
+    >
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-1" href="/">
@@ -94,19 +114,19 @@ export const Navbar = () => {
       </NavbarContent>
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        <Link isExternal aria-label="Github" href={siteConfig.links.github}>
-          <GithubIcon className="text-default-500" />
-        </Link>
+        <TimeFormatSwitch />
         <ThemeSwitch />
-        <NavbarMenuToggle />
+        <NavbarMenuToggle
+          onClick={updateMenu}
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+        />
       </NavbarContent>
 
       <NavbarMenu>
-        {searchInput}
         <div className="mx-4 mt-2 flex flex-col gap-2">
           {siteConfig.navMenuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
-              <Link href={item.href} size="lg">
+              <Link onClick={updateMenuClose} href={item.href} size="lg">
                 {item.label}
               </Link>
             </NavbarMenuItem>
