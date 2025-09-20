@@ -4,6 +4,12 @@ import { useEffect, useState } from "react";
 import { DateTime } from "luxon";
 import { Select, SelectItem } from "@heroui/select";
 import { useBearStore } from "../state/use-app-state";
+import timezones from "../../static/timezones.json";
+import {
+  Autocomplete,
+  AutocompleteSection,
+  AutocompleteItem,
+} from "@heroui/autocomplete";
 
 export const countries = [
   { key: "Asia/Singapore", label: "Singapore" },
@@ -43,17 +49,34 @@ export default function DigitalClock() {
       <span>{tz}</span>
 
       <div>
-        <Select
+        {/* <Select
           className="max-w-xs"
           label="Select country"
           onSelectionChange={(selected) =>
             changeTimeZone(selected.currentKey as string)
           }
         >
-          {countries.map((country) => (
-            <SelectItem key={country.key}>{country.label}</SelectItem>
+          {timezones.map((timezone) => (
+            <SelectItem key={timezone.utc[0]}>{timezone.text}</SelectItem>
           ))}
-        </Select>
+        </Select> */}
+        <div>
+          <Autocomplete
+            className="max-w-xs"
+            defaultItems={timezones}
+            label="Country's Timezone"
+            placeholder="Search for a country"
+          >
+            {(item) => (
+              <AutocompleteItem
+                onClick={() => changeTimeZone(item.utc[0])}
+                key={item.value}
+              >
+                {item.text}
+              </AutocompleteItem>
+            )}
+          </Autocomplete>
+        </div>
       </div>
     </div>
   );
