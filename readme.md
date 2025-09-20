@@ -6,7 +6,13 @@ Find time, in different timezones
 
 ## Stack
 
-- `Next`
+- `NextJS`
+- `Zustand`
+- `TailwindCSS`
 - `HeroUI`
 
 Deployed on `render`
+
+## Credits
+
+[Timezones JSON](https://github.com/dmfilipenko/timezones.json/blob/master/timezones.json)
