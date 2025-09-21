@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
   },
+  manifest: "/web.manifest",
 };
 
 export const viewport: Viewport = {
@@ -39,7 +40,8 @@ export default function RootLayout({
       <body
         className={clsx(
           "min-h-screen text-foreground bg-background font-sans antialiased",
-          fontSans.variable, fontMono.variable
+          fontSans.variable,
+          fontMono.variable
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
