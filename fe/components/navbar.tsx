@@ -80,58 +80,58 @@ export const Navbar = () => {
             <p className="font-bold text-inherit">ifindtime</p>
           </NextLink>
         </NavbarBrand>
-        {/* <ul className="hidden lg:flex gap-4 justify-start ml-2"> */}
-        {siteConfig.navItems.map((item, i) =>
-          item.type == "link" ? (
-            <NavbarItem key={i}>
-              <NextLink
-                className={clsx(
-                  linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium"
-                )}
-                color="foreground"
-                href={item.href as string}
-              >
-                {item.label}
-              </NextLink>
-            </NavbarItem>
-          ) : (
-            <Dropdown key={i}>
-              <NavbarItem>
-                <DropdownTrigger>
-                  <Button
-                    disableRipple
-                    className="p-0 bg-transparent data-[hover=true]:bg-transparent"
-                    endContent={<ChevronDown size={16} />}
-                    radius="sm"
-                    variant="light"
-                  >
-                    {item.label}
-                  </Button>
-                </DropdownTrigger>
+        <ul className="hidden lg:flex gap-4 justify-start ml-2">
+          {siteConfig.navItems.map((item, i) =>
+            item.type == "link" ? (
+              <NavbarItem key={i}>
+                <NextLink
+                  className={clsx(
+                    linkStyles({ color: "foreground" }),
+                    "data-[active=true]:text-primary data-[active=true]:font-medium"
+                  )}
+                  color="foreground"
+                  href={item.href as string}
+                >
+                  {item.label}
+                </NextLink>
               </NavbarItem>
-              <DropdownMenu
-                aria-label={item.label}
-                itemClasses={{
-                  base: "gap-4",
-                }}
-              >
-                {(item.items as any) &&
-                  item.items?.map((i) => (
-                    <DropdownItem
-                      href={i.href}
-                      key={i.label}
-                      description={i.desc}
-                      startContent={<i.icon />}
+            ) : (
+              <Dropdown key={i}>
+                <NavbarItem>
+                  <DropdownTrigger>
+                    <Button
+                      disableRipple
+                      className="p-0 bg-transparent data-[hover=true]:bg-transparent"
+                      endContent={<ChevronDown size={16} />}
+                      radius="sm"
+                      variant="light"
                     >
-                      {i.label}
-                    </DropdownItem>
-                  ))}
-              </DropdownMenu>
-            </Dropdown>
-          )
-        )}
-        {/* </ul> */}
+                      {item.label}
+                    </Button>
+                  </DropdownTrigger>
+                </NavbarItem>
+                <DropdownMenu
+                  aria-label={item.label}
+                  itemClasses={{
+                    base: "gap-4",
+                  }}
+                >
+                  {(item.items as any) &&
+                    item.items?.map((i) => (
+                      <DropdownItem
+                        href={i.href}
+                        key={i.label}
+                        description={i.desc}
+                        startContent={<i.icon />}
+                      >
+                        {i.label}
+                      </DropdownItem>
+                    ))}
+                </DropdownMenu>
+              </Dropdown>
+            )
+          )}
+        </ul>
       </NavbarContent>
 
       <NavbarContent
