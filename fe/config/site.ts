@@ -1,3 +1,4 @@
+import { Calculator } from "lucide-react";
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
@@ -5,13 +6,23 @@ export const siteConfig = {
   description: "Find time, timezones no problem",
   navItems: [
     {
+      type: "link",
       label: "Home",
       href: "/",
     },
     {
-      label: "About",
-      href: "/about",
+      type: "dropdown",
+      label: "Tools",
+      items: [
+        {
+          label: "Count Days",
+          href: "/tools/countdays",
+          desc: "Count the number of days between today and specified date",
+          icon: Calculator,
+        },
+      ],
     },
+    { type: "link", label: "About", href: "/about" },
   ],
   navMenuItems: [
     {
