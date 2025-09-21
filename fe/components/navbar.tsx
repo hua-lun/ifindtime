@@ -1,4 +1,5 @@
 "use client";
+import { Button, ButtonGroup } from "@heroui/button";
 import {
   Navbar as HeroUINavbar,
   NavbarContent,
@@ -8,6 +9,13 @@ import {
   NavbarItem,
   NavbarMenuItem,
 } from "@heroui/navbar";
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownSection,
+  DropdownItem,
+} from "@heroui/dropdown";
 import { Kbd } from "@heroui/kbd";
 import { Link } from "@heroui/link";
 import { Input } from "@heroui/input";
@@ -20,6 +28,7 @@ import { ThemeSwitch } from "@/components/theme-switch";
 import { SearchIcon, Logo } from "@/components/icons";
 import TimeFormatSwitch from "../app/features/components/time-format-switch";
 import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -71,22 +80,58 @@ export const Navbar = () => {
             <p className="font-bold text-inherit">ifindtime</p>
           </NextLink>
         </NavbarBrand>
-        <ul className="hidden lg:flex gap-4 justify-start ml-2">
-          {siteConfig.navItems.map((item) => (
-            <NavbarItem key={item.href}>
+        {/* <ul className="hidden lg:flex gap-4 justify-start ml-2"> */}
+        {siteConfig.navItems.map((item, i) =>
+          item.type == "link" ? (
+            <NavbarItem key={i}>
               <NextLink
                 className={clsx(
                   linkStyles({ color: "foreground" }),
                   "data-[active=true]:text-primary data-[active=true]:font-medium"
                 )}
                 color="foreground"
-                href={item.href}
+                href={item.href as string}
               >
                 {item.label}
               </NextLink>
             </NavbarItem>
-          ))}
-        </ul>
+          ) : (
+            <Dropdown key={i}>
+              <NavbarItem>
+                <DropdownTrigger>
+                  <Button
+                    disableRipple
+                    className="p-0 bg-transparent data-[hover=true]:bg-transparent"
+                    endContent={<ChevronDown size={16} />}
+                    radius="sm"
+                    variant="light"
+                  >
+                    {item.label}
+                  </Button>
+                </DropdownTrigger>
+              </NavbarItem>
+              <DropdownMenu
+                aria-label={item.label}
+                itemClasses={{
+                  base: "gap-4",
+                }}
+              >
+                {(item.items as any) &&
+                  item.items?.map((i) => (
+                    <DropdownItem
+                      href={i.href}
+                      key={i.label}
+                      description={i.desc}
+                      startContent={<i.icon />}
+                    >
+                      {i.label}
+                    </DropdownItem>
+                  ))}
+              </DropdownMenu>
+            </Dropdown>
+          )
+        )}
+        {/* </ul> */}
       </NavbarContent>
 
       <NavbarContent
