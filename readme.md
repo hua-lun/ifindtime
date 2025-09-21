@@ -15,4 +15,4 @@ Deployed on `render`
 
 ## Credits
 
-[Timezones JSON](https://github.com/dmfilipenko/timezones.json/blob/master/timezones.json)
+[Timezones JSON](https://github.com/vvo/tzdb)
