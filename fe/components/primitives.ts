@@ -16,6 +16,7 @@ export const title = tv({
       sm: "text-3xl lg:text-4xl",
       md: "text-[2.3rem] lg:text-5xl",
       lg: "text-4xl lg:text-6xl",
+      home: "text-xl sm:text-5xl",
     },
     fullWidth: {
       true: "w-full block",
