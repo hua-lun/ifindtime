@@ -48,7 +48,7 @@ export default function DigitalClock() {
           <span className="font-mono text-center text-5xl sm:text-9xl">
             {dtArr[0]}
           </span>
-          <span className="text-center text-2xl sm:text-6xl"> pm</span>
+          <span className="text-center text-2xl sm:text-6xl"> {dtArr[1]}</span>
         </div>
       );
     } else {
