@@ -30,6 +30,10 @@ export const siteConfig = {
       href: "/",
     },
     {
+      label: "Count Days",
+      href: "/tools/countdays",
+    },
+    {
       label: "About",
       href: "/about",
     },
