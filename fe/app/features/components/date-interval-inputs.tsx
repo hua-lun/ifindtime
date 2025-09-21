@@ -19,6 +19,10 @@ export default function DateIntervalInputs() {
 
   const [totalDays, setTodayDays] = useState<number>();
 
+  const getFormattedDate = (date: CalendarDate) => {
+    return formatter.format(date.toDate(getLocalTimeZone()));
+  };
+
   const getDateTime = (d1: CalendarDate, d2: CalendarDate) => {
     var i1 = DateTime.fromJSDate(d1.toDate(getLocalTimeZone())),
       i2 = DateTime.fromJSDate(d2.toDate(getLocalTimeZone()));
@@ -42,20 +46,14 @@ export default function DateIntervalInputs() {
           <CardBody className="gap-2">
             <div className="inline-block text-center justify-center gap-1">
               <span className="font-mono text-center text-2xl sm:text-6xl">
-                From{" "}
-                {startValue
-                  ? formatter.format(startValue.toDate(getLocalTimeZone()))
-                  : "--"}{" "}
-                there are, <br />
+                From {startValue ? getFormattedDate(startValue) : "--"} there
+                are, <br />
               </span>
               <span className={title({ color: "pink", size: "home" })}>
                 {totalDays ? totalDays : "__"} days <br />
               </span>
               <span className="font-mono text-center text-2xl sm:text-6xl">
-                till{" "}
-                {endValue
-                  ? formatter.format(endValue.toDate(getLocalTimeZone()))
-                  : "__"}
+                till {endValue ? getFormattedDate(endValue) : "__"}
               </span>
             </div>
           </CardBody>
