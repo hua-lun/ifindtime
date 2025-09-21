@@ -6,7 +6,7 @@ interface AppState {
 }
 
 export const useBearStore = create<AppState>()((set) => ({
-  timeFormat: "en-US",
+  timeFormat: "en-GB",
   updateTimeFormat: () =>
     set((state) => ({
       timeFormat: state.timeFormat == "en-US" ? "en-GB" : "en-US",

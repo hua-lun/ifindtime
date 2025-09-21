@@ -6,12 +6,12 @@ import { useState } from "react";
 import { useBearStore } from "../../features/state/use-app-state";
 
 export default function TimeFormatSwitch() {
-  const [format, setFormat] = useState("12");
+  const [format, setFormat] = useState("24");
 
   const { updateTimeFormat } = useBearStore();
   const changeFormat = () => {
     if (format == "12") {
-      updateTimeFormat("fr");
+      updateTimeFormat("en-GB ");
       setFormat("24");
     } else {
       updateTimeFormat("en-US");
