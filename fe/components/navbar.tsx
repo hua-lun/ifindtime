@@ -84,7 +84,7 @@ export const Navbar = () => {
           {siteConfig.navItems.map((item, i) =>
             item.type == "link" ? (
               <NavbarItem key={i}>
-                <NextLink
+                {/* <NextLink
                   className={clsx(
                     linkStyles({ color: "foreground" }),
                     "data-[active=true]:text-primary data-[active=true]:font-medium"
@@ -92,8 +92,25 @@ export const Navbar = () => {
                   color="foreground"
                   href={item.href as string}
                 >
-                  {item.label}
-                </NextLink>
+                  
+                </NextLink> */}
+                <Button
+                  disableRipple
+                  className="p-0 bg-transparent data-[hover=true]:bg-transparent"
+                  radius="sm"
+                  variant="light"
+                >
+                  <NextLink
+                    className={clsx(
+                      linkStyles({ color: "foreground" }),
+                      "data-[active=true]:text-primary data-[active=true]:font-medium"
+                    )}
+                    color="foreground"
+                    href={item.href as string}
+                  >
+                    <span className="text-bold text-xl">{item.label}</span>
+                  </NextLink>
+                </Button>
               </NavbarItem>
             ) : (
               <Dropdown key={i}>
@@ -106,7 +123,7 @@ export const Navbar = () => {
                       radius="sm"
                       variant="light"
                     >
-                      {item.label}
+                      <span className="text-bold text-xl">{item.label}</span>
                     </Button>
                   </DropdownTrigger>
                 </NavbarItem>

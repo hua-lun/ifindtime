@@ -1,18 +1,46 @@
 {
-    "name": "ifindtime PWA",
-    "short_name": "ifindtimePWA",
+    "name": "ifindtime",
+    "short_name": "ifindtime",
     "id": "ifindtime",
-    "description": "A Progressive Web App built with Next.js",
+    "description": "ifindtime is a Progressive Web App built with Next.js",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#8936FF",
     "icons": [
     {
-      
       "sizes": "512x512",
       "src": "icon.png",
       "type": "image/png"
     }
-  ]
+    ],
+    "screenshots": [
+      {
+        "src": "Screenshot1.png",
+        "type": "image/png",
+        "form_factor": "wide",
+        "sizes": "3248x1928",
+        "label": "Home screen showing main navigation and featured content (light mode)"
+      },
+      {
+        "src": "Screenshot3.png",
+        "type": "image/png",
+        "form_factor": "wide",
+        "sizes": "3248x1928",
+        "label": "Home screen showing main navigation and featured content (dark mode)"
+      },
+      {
+        "src": "Screenshot2.png",
+        "type": "image/png",
+        "form_factor": "wide",
+        "sizes": "3248x1928",
+        "label": "Count number of days between two dates"
+      },
+      {
+        "src": "Screenshot4.png",
+        "type": "image/png",
+        "sizes": "626x1348",
+        "label": "Count number of days between two dates"
+      }
+    ]
   }
